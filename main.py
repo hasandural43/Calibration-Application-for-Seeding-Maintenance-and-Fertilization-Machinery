@@ -101,7 +101,7 @@ def calculate_fertilization_q(qh: float, W: float, V: float) -> float:
     return result
 
 
-# YENİ HESAPLAMA FONKSİYONLARI
+
 def calculate_work_performance(work_width: float, speed: float, efficiency: float) -> float:
     """ Saatte etkili olarak işlenen alanı dekar cinsinden hesaplar. """
     if speed == 0 or work_width == 0:
