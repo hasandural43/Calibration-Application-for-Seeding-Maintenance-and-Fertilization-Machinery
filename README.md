@@ -131,8 +131,7 @@ Click **"Hesapla" (Calculate)**. The software processes the algorithmic matrix a
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/seed-calibration-tool.git
-cd seed-calibration-tool
+git clone https://github.com/hasandural43/Calibration-Application-for-Seeding-Maintenance-and-Fertilization-Machinery.git
 
 # 2. Set up a virtual environment (Recommended)
 python -m venv .venv
