@@ -1,0 +1,15 @@
+# GUI and Theming
+ttkbootstrap>=1.10.1
+
+# Data Processing
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# PDF Generation
+reportlab>=4.0.0
+
+# Data Visualization
+matplotlib>=3.7.0
+
+# Type Hinting & Utils (Standard in Python 3.8+, but good for environment tracking)
+typing-extensions>=4.5.0
