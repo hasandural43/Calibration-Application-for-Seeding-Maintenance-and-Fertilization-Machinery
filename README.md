@@ -147,14 +147,16 @@ python main.py
 
 ---
 
-7. Reporting & Data Export
+## **7. Reporting & Data Export
 The application utilizes a custom PDFGenerator class to bypass standard Tkinter limitations, ensuring high-fidelity outputs for academic and field use.
 
 PDF Reports: Powered by ReportLab, rendering vectorized tables, custom headers, and italicized mathematical formulas. It includes UTF-8 encoding support via DejaVuSans to ensure complete accuracy for localized characters.
 
 Excel Reports: Built with openpyxl, generating stylized spreadsheets with distinct color-coded headers (#2E86AB for parameters, #C73E1D for results). It automatically includes metadata (Timestamp, Author) and executes automated column width adjustments for immediate print-readiness.
 
-8. Academic Citation & License
+---
+
+## **8. Academic Citation & License
 Author: Hasan Dural
 Academic Supervisor: Prof. Dr. Davut Karayel
 Institution: Akdeniz University, Faculty of Agriculture, Department of Agricultural Machinery and Technologies Engineering.
