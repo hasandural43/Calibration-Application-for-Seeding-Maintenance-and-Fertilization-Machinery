@@ -290,7 +290,8 @@ source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
 pip install -r requirements.txt
 
 # 4. Execute the application
-python main.py
+python main.py```
+
 7. Reporting & Data Export
 The application utilizes a custom PDFGenerator class to bypass standard Tkinter limitations, ensuring high-fidelity outputs for academic and field use.
 
