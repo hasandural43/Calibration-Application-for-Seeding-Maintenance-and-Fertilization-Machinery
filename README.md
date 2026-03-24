@@ -1,11 +1,3 @@
-Gemini şunu dedi:
-Tam tahmin ettiğim gibi! Sorunun kaynağını gönderdiğin metinde net bir şekilde görebiliyorum.
-
-6. Installation & Deployment kısmındaki Quick Start başlığının altındaki kod bloğunu (```bash ile başlayan yer) kapatmamışız. Kapatılmadığı için GitHub, altındaki 7 ve 8. bölümleri ve geri kalan tüm yazıları o terminal komutunun bir parçası sanmış.
-
-Ayrıca senin isteğine uygun olarak bütün başlıkları (## **Başlık**) formatıyla kalınlaştırdım. Aşağıdaki metni kopyalayıp doğrudan README.md dosyana yapıştırabilirsin. Artık tablo, içindekiler kısmı, kod blokları ve kalın yazılar kusursuz çalışacaktır:
-
-Markdown
 <div align="center">
 
 # 🚜 Agricultural Machinery Calibration & Engineering Suite
@@ -23,7 +15,7 @@ Markdown
 
 ---
 
-## 📑 Table of Contents
+## **📑 Table of Contents**
 1. [Executive Summary](#1-executive-summary)
 2. [Mathematical Models & Core Modules](#2-mathematical-models--core-modules)
 3. [Precision, Accuracy, and Agronomic Standards](#3-precision-accuracy-and-agronomic-standards)
@@ -36,7 +28,6 @@ Markdown
 ---
 
 ## **1. Executive Summary**
-
 
 The **Agricultural Machinery Calibration Suite** is a desktop software engineered to optimize the performance of grain seeders, precision planters, and centrifugal fertilizer spreaders. Developed as part of an academic thesis at **Akdeniz University, Faculty of Agriculture**, the tool digitizes complex mechanization formulas to eliminate input waste, ensure optimal plant spacing, and generate professional compliance reports.
 
@@ -57,6 +48,9 @@ Calculates the exact mechanical delivery rate required to achieve a target decar
 
 ### **2.2. Precision Seeder Kinematics**
 Determines the theoretical intra-row spacing based on mechanical transmission.
+
+
+
 * **Row Spacing ($a$):**
   $$a = \frac{\pi \times D}{i \times n}$$
   Where $i$ is the transmission ratio and $n$ is the number of holes on the vacuum disk.
@@ -130,9 +124,10 @@ Click **"Hesapla" (Calculate)**. The software processes the algorithmic matrix a
 * Ensure `DejaVuSans.ttf` is present in the root directory for UTF-8 PDF rendering.
 
 ### **Quick Start**
+
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/seed-calibration-tool.git
+git clone [https://github.com/yourusername/seed-calibration-tool.git](https://github.com/yourusername/seed-calibration-tool.git)
 cd seed-calibration-tool
 
 # 2. Set up a virtual environment (Recommended)
@@ -147,19 +142,16 @@ python main.py
 
 ---
 
-## **7. Reporting & Data Export
-The application utilizes a custom PDFGenerator class to bypass standard Tkinter limitations, ensuring high-fidelity outputs for academic and field use.
+## **7. Reporting & Data Export**
+###**The application utilizes a custom PDFGenerator class to bypass standard Tkinter limitations, ensuring high-fidelity outputs for academic and field use.**
 
-PDF Reports: Powered by ReportLab, rendering vectorized tables, custom headers, and italicized mathematical formulas. It includes UTF-8 encoding support via DejaVuSans to ensure complete accuracy for localized characters.
+###**PDF Reports: Powered by ReportLab, rendering vectorized tables, custom headers, and italicized mathematical formulas. It includes UTF-8 encoding support via DejaVuSans to ensure complete accuracy for localized characters.**
 
-Excel Reports: Built with openpyxl, generating stylized spreadsheets with distinct color-coded headers (#2E86AB for parameters, #C73E1D for results). It automatically includes metadata (Timestamp, Author) and executes automated column width adjustments for immediate print-readiness.
+###**Excel Reports: Built with openpyxl, generating stylized spreadsheets with distinct color-coded headers (#2E86AB for parameters, #C73E1D for results). It automatically includes metadata (Timestamp, Author) and executes automated column width adjustments for immediate print-readiness.**
 
----
-
-## **8. Academic Citation & License
+8. Academic Citation & License
 Author: Hasan Dural
 Academic Supervisor: Prof. Dr. Davut Karayel
 Institution: Akdeniz University, Faculty of Agriculture, Department of Agricultural Machinery and Technologies Engineering.
 
 This software is released under the MIT License. Permission is granted to use, modify, and distribute this software. For academic and professional use, please provide appropriate attribution to the original author and institution.
-
