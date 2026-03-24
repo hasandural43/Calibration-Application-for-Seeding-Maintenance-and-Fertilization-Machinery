@@ -1,6 +1,7 @@
 <div align="center">
 
-# 🚜 Agricultural Machinery Calibration & Engineering Suite
+# 🚜 Calibration Application for Seeding Maintenance and Fertilization Machinery
+
 
 **A Professional Desktop Application for High-Precision Seeding and Fertilization Optimization**
 
