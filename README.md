@@ -1,86 +1,153 @@
-🚜 Seed & Fertilizer Calibration Tool
-A professional-grade desktop application designed for the precise calibration of agricultural seeding and fertilization machinery. Developed as part of an academic thesis at Akdeniz University, Faculty of Agriculture, this tool integrates mechanical engineering formulas with a modern GUI to optimize field efficiency and planting accuracy.
+<div align="center">
 
-🔬 Scientific & Engineering Background
-The application digitizes traditional calibration methods used in Agricultural Mechanization. It provides high-precision calculations for:
+# 🚜 Agricultural Machinery Calibration & Engineering Suite
 
-1. Seeding Calibration (Grain & Precision)
-Static Seeding Test: Calculates the required seed mass for 20 wheel rotations based on the decare norm (kg/da).
+**A Professional Desktop Application for High-Precision Seeding and Fertilization Optimization**
 
-Formula: Q 
-20
-​
- =Q×0.063×D×B
+[![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue.svg?style=for-the-badge&logo=python)](#)
+[![UI Framework](https://img.shields.io/badge/GUI-ttkbootstrap-2ea44f.svg?style=for-the-badge)](#)
+[![License](https://img.shields.io/badge/License-MIT-purple.svg?style=for-the-badge)](#)
+[![Institution](https://img.shields.io/badge/Akdeniz_University-Agriculture-orange.svg?style=for-the-badge)](#)
 
-Precision Seeding Quality (Singulation): Analyzes row-spacing distribution to determine Multiples, Skips, and Acceptable seeding rates based on theoretical target distance.
+*Developed for rigorous agricultural mechanization analysis, bridging theoretical agronomic formulas with real-world field application.*
 
-Quality Thresholds: Multiples (x<0.5a), Skips (x>1.5a).
+</div>
 
-2. Fertilization Norms
-Volumetric Flow Analysis: Calculates the hourly capacity (Q 
-h
-​
- ) of centrifugal or box spreaders by integrating feeding speed, gate height, and fertilizer bulk density (λ).
+---
 
-Application Norm (q): Converts hourly flow into field application rates (kg/da) based on working width and tractor ground speed.
+## 📑 Table of Contents
+1. [Executive Summary](#1-executive-summary)
+2. [Mathematical Models & Core Modules](#2-mathematical-models--core-modules)
+3. [Precision, Accuracy, and Agronomic Standards](#3-precision-accuracy-and-agronomic-standards)
+4. [Software Architecture & Tech Stack](#4-software-architecture--tech-stack)
+5. [Step-by-Step User Guide](#5-step-by-step-user-guide)
+6. [Installation & Deployment](#6-installation--deployment)
+7. [Reporting & Data Export](#7-reporting--data-export)
+8. [Academic Citation](#8-academic-citation)
 
-3. Field Performance & Logistics
-Work Performance: Calculates effective field capacity (da/h) considering field efficiency coefficients.
+---
 
-Marker Lengths: Geometric calculation for tractor alignment to ensure zero-overlap and zero-gap seeding.
+## 1. Executive Summary
 
-💻 Technical Stack & Features
-Architecture
-GUI Framework: ttkbootstrap for a modern, responsive, and theme-able interface.
+The **Agricultural Machinery Calibration Suite** is a desktop software engineered to optimize the performance of grain seeders, precision planters, and centrifugal fertilizer spreaders. Developed as part of an academic thesis at **Akdeniz University, Faculty of Agriculture**, the tool digitizes complex mechanization formulas to eliminate input waste, ensure optimal plant spacing, and generate professional compliance reports.
 
-Data Management: Persistent storage using JSON-based configuration for user preferences and calculation history.
+---
 
-Data Validation: Real-time input sanitization using Tkinter's validatecommand to ensure numerical integrity.
+## 2. Mathematical Models & Core Modules
 
-OOP Principles: Utilization of dataclasses and modular class structures for scalable computation logic.
+The software engine computes real-time agronomic data using the following deterministic engineering models:
 
-Reporting & Export
-Professional PDF Export: Powered by reportlab, featuring custom UTF-8 (DejaVuSans) font integration to support multi-language characters and academic formatting.
+### 2.1. Grain Seeder Calibration (Static & Field)
+Calculates the exact mechanical delivery rate required to achieve a target decare norm.
+* **Static 20-Rotation Formulation:**
+  $$Q_{20} = Q \times 0.063 \times D \times B$$
+  Where $Q_{20}$ is the seed mass for 20 rotations (kg), $Q$ is the target rate (kg/da), $D$ is wheel diameter (m), and $B$ is working width (m).
+* **Field Consumption Rate:**
+  $$Q = \frac{1000 \times q}{2 \times L \times B}$$
+  Where $q$ is total seeds consumed (kg) over distance $L$ (m).
 
-Excel Integration: Built with openpyxl and pandas, exporting styled spreadsheets with descriptive metadata for field records.
+### 2.2. Precision Seeder Kinematics
+Determines the theoretical intra-row spacing based on mechanical transmission.
+* **Row Spacing ($a$):**
+  $$a = \frac{\pi \times D}{i \times n}$$
+  Where $i$ is the transmission ratio and $n$ is the number of holes on the vacuum disk.
 
-History Tracking: A built-in SQLite-style history log (stored in JSON) to review the last 5 calculations per module.
+### 2.3. Volumetric Fertilizer Spreaders
+Synchronizes material discharge with tractor ground speed to prevent toxic over-application.
+* **Hourly Discharge Capacity ($Q_h$):**
+  $$Q_h = 0.06 \times V_b \times h \times b \times \lambda$$
+  Where $V_b$ is feed rate (m/min), $h$ is gate height (m), $b$ is gate width (m), and $\lambda$ is bulk density (kg/m³).
+* **Application Norm ($q$):**
+  $$q = \left( \frac{Q_h}{W \times V} \right) \times 1000$$
+  Where $W$ is working width (m) and $V$ is forward velocity (km/h).
 
-🛠 Installation & Usage
-Prerequisites
-Python 3.8+
+### 2.4. Logistics & Agronomy
+* **Work Performance:** Computes effective field capacity ($C = \frac{W \times V \times \eta}{10}$ da/h) utilizing field efficiency coefficients ($\eta$).
+* **Marker Alignment:** Geometric calculation to prevent overlapping: $x_{right/left} = b \mp \frac{L}{2}$.
+* **Biological Seed Rate:** Adjusts required seed mass utilizing Thousand Grain Weight (TGW), Purity (%), and Germination Rate (%).
 
-DejaVuSans.ttf font file (included in root for PDF rendering)
+---
 
-Setup
-Clone the repository:
+## 3. Precision, Accuracy, and Agronomic Standards
 
-Bash
-git clone https://github.com/yourusername/seed-calibration-tool.git
+This software operates with **64-bit floating-point precision** for all internal mathematical computations, ensuring zero arithmetic degradation.
+
+### Seeding Quality (Singulation) Standards
+The **Ekim Kalitesi (Seeding Quality)** module algorithmically parses arrays of field-measured seed spacings and evaluates them against global agronomic standards:
+* **Multiples (İkizleme):** Distance $< 0.5a$ (Causes resource competition).
+* **Skips (Boşluk):** Distance $> 1.5a$ (Causes yield gaps).
+* **Acceptable (Kabul Edilebilir):** $0.5a \leq x \leq 1.5a$.
+
+**Systematic Compliance Thresholds:**
+The software utilizes strict boolean logic to issue a `SUITABLE ✅` or `NOT SUITABLE ❌` verdict based on selected crop tolerances:
+1. **Row Crops (Corn, Cotton, Sunflower):** Requires **$\geq 90\%$** acceptable spacing.
+2. **Vegetable Crops:** Requires **$\geq 85\%$** acceptable spacing.
+
+---
+
+## 4. Software Architecture & Tech Stack
+
+* **Front-End:** `ttkbootstrap` (Modernized Tkinter implementation with Dark/Light theme support).
+* **Validation Layer:** Real-time keystroke validation (`validatecommand`) blocking non-float/NaN injections.
+* **Data Persistence:** Local `JSON` serialization storing the last 5 chronological calculation states per module.
+* **Reporting Engines:** `ReportLab` (Vector-based PDF generation with dynamic tables) and `openpyxl` (Structured Excel data formatting).
+
+---
+
+## 5. Step-by-Step User Guide
+
+### Step 1: Initialization & Module Selection
+Launch the application. You will be greeted by the Main Dashboard. Select your target machinery category: **Tahıl (Grain)**, **Hassas (Precision)**, or **Gübre (Fertilizer)**.
+
+> **Note:** Use the unit toggle at the top left to switch globally between Metric (m) and Centimetric (cm) inputs.
+
+### Step 2: Parameter Injection
+Navigate to the desired tab. Input your mechanical constraints (e.g., wheel diameter, transmission ratio). The system automatically sanitizes inputs.
+
+### Step 3: Computation & Verification
+Click **"Hesapla" (Calculate)**. The software processes the algorithmic matrix and outputs the exact operational norm. For precision quality, it calculates the statistical distribution of your inputted field measurements.
+
+### Step 4: Export & Auditing
+* Click **"PDF'e Yazdır"** to generate an academic-grade report containing all inputs, outputs, and the specific mathematical formula utilized.
+* Click **"Excel'e Aktar"** to push the data into a structured `.xlsx` file for long-term farm management tracking.
+* Click **"Geçmiş" (History)** to view your previous calculations in a robust `Treeview` data grid.
+
+---
+
+## 6. Installation & Deployment
+
+### Prerequisites
+* **Python 3.8+**
+* Ensure `DejaVuSans.ttf` is present in the root directory for UTF-8 PDF rendering.
+
+### Quick Start
+```bash
+# 1. Clone the repository
+git clone [https://github.com/yourusername/seed-calibration-tool.git](https://github.com/yourusername/seed-calibration-tool.git)
 cd seed-calibration-tool
-Install dependencies:
 
-Bash
-pip install ttkbootstrap reportlab pandas openpyxl matplotlib
-Run the application:
+# 2. Set up a virtual environment (Recommended)
+python -m venv .venv
+source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
 
-Bash
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Execute the application
 python main.py
-📊 Application Modules
-Grain Seeder: 20-rotation test and field-norm verification.
 
-Precision Seeder: Row spacing analysis and singulation quality check.
+## 7. Reporting & Data Export
 
-Fertilizer Spreader: Flow rate and distribution norm calibration.
+The application utilizes a custom `PDFGenerator` class to bypass standard Tkinter limitations, ensuring high-fidelity outputs for academic and field use.
+* **PDF Reports:** Powered by `ReportLab`, rendering vectorized tables, custom headers, and italicized mathematical formulas. It includes UTF-8 encoding support via `DejaVuSans` to ensure complete accuracy for localized characters.
+* **Excel Reports:** Built with `openpyxl`, generating stylized spreadsheets with distinct color-coded headers (`#2E86AB` for parameters, `#C73E1D` for results). It automatically includes metadata (Timestamp, Author) and executes automated column width adjustments for immediate print-readiness.
 
-Agricultural Logistics: Marker length, germination rate, and work success calculations.
+---
 
-🎓 Academic Credit
-Author: Hasan Dural
+## 8. Academic Citation & License
 
-Advisor: Prof. Dr. Davut Karayel
+**Author:** Hasan Dural  
+**Academic Supervisor:** Prof. Dr. Davut Karayel  
+**Institution:** Akdeniz University, Faculty of Agriculture, Department of Agricultural Machinery and Technologies Engineering.
 
-Institution: Akdeniz University, Faculty of Agriculture, Department of Agricultural Machinery and Technologies Engineering.
-
-📜 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This software is released under the **MIT License**. Permission is granted to use, modify, and distribute this software. For academic and professional use, please provide appropriate attribution to the original author and institution.
