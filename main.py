@@ -120,8 +120,6 @@ def calculate_germination_seed_rate(target_plants: float, thousand_grain_weight:
     if denominator == 0:
         logger.warning("Germination or purity rate is zero.")
         return 0.0
-    # Formül: (Hedef Bitki Sayısı * 1000 Tane Ağırlığı) / (Çimlenme Oranı * Saflık Oranı * 100)
-    # (gram/da cinsinden sonucu kg/da'ya çevirmek için 1000'e bölmek gerekir)
     result_gram_da = (target_plants * thousand_grain_weight) / ((germination_rate / 100) * (purity_rate / 100))
     result_kg_da = result_gram_da / 1000
     logger.debug(f"Calculated seed rate based on germination: {result_kg_da} kg/da")
