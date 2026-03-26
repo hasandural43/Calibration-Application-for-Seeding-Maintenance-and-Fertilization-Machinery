@@ -106,8 +106,7 @@ def calculate_work_performance(work_width: float, speed: float, efficiency: floa
     """ Saatte etkili olarak işlenen alanı dekar cinsinden hesaplar. """
     if speed == 0 or work_width == 0:
         return 0.0
-    # Formül: (İş Genişliği (m) * Hız (km/h) * Verimlilik (%)) / 1000
-    # Sadeleştirilmiş hali: İş Genişliği * Hız * Verimlilik / 10
+ 
     result = (work_width * speed * (efficiency / 100)) * 1000 / 10000
     result = (work_width * speed * efficiency) / 10.0
     logger.debug(f"Calculated work performance: {result} da/saat")
